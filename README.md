@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Empezar a utilizar el boilerplate :
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instalar los modulos
 
-## Available Scripts
+### Empieza con `npm install` espera hasta que acabe de instalar todos los modulos.
 
-In the project directory, you can run:
+## Abrir el repositorio
 
-### `npm start`
+### Ahora puedes ejecutar el servidor con `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Configuracion sobre el boilerplate:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Librerias y repositorios instalados:
 
-### `npm test`
+- REACT
+- REACT ROUTER
+- REACT BOOTSTRAP
+- useAnimations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Espacios configurados:
 
-### `npm run build`
+### React router:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dentro de la carpeta "src/routes" puedes encontrar el enrutador para crear nuevas vistas a tu pagina.
+Se ha incluido y configurado el archivo Layout, para que si necesitas poner un Footer o un Navar que quieras que se vean en todas las paginas independientemente de la ruta seleccionada.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Contexto :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Configurado el contexto usado en react.
+Dentro de la carpeta "src/store"
 
-### `npm run eject`
+### React Bootstrap :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+React bootstrap esta instalado y listo para su funcionamiento, para mas informacion acerca de su funcionamiento sigue este enlace: https://react-bootstrap.github.io/ .
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### useAnimations :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+La libreria de useAnimations esta lista para usarse, aqui hay un enlace con ejemplos sobre como usarla : https://codesandbox.io/s/wonderful-architecture-9prk6
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Enlace a la pagina de la libreria: https://useanimations.com/
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enlace al repositorio de github (util para consultar los iconos disponibles dentro de /libs/ ) : https://github.com/useAnimations/react-useanimations/tree/master/src
