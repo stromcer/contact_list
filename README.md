@@ -4,9 +4,9 @@
 
 ### Empieza con `npm install` espera hasta que acabe de instalar todos los modulos.
 
-## Abrir el repositorio
+## Iniciar el servidor web
 
-### Ahora puedes ejecutar el servidor con `npm start`
+### Ahora puedes ejecutar el servidor con `npm start` cuando acabe, se te abrira automaticamente una ventana en el navegador.
 
 # Configuracion sobre el boilerplate:
 

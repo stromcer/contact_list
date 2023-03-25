@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useState, useEffect } from 'react';
-
+import { getAgenda } from './externalActions';
 
 
 
@@ -10,16 +10,21 @@ const Context = createContext();
 
 export const ContextProvider = ({children}) => {
 
+   const [ agenda ,setAgenda ] = useState([]);
+   const [ modalNewContact, setModalNewContact ] = useState({});
 
-    //DATOS EJEMPLO DE COMO USAR EL CONTEXT DEL BOILERPLATE 
-    const [test ,setTest] = useState(true);
-    const handleSetTest = () => setTest( prev => !prev);
 
-    // EN STORE ALMACENAMOS LOS DATOS PARA PASAR A TODA LA APP
-    const store = { test, };
+
+    useEffect(()=>{
+        getAgenda("https://assets.breatheco.de/apis/fake/contact/agenda/dmmstr", setAgenda)
+    },[])
+
+
+    const store = { agenda, modalNewContact };
     
-    // EN ACTIONS ALMACENAMOS TODAS LAS FUNCIONES QUE QUEREMOS PASAR AL RESTO DE LA FUNCION (EVITAR PONER setStates, usar handles intermedios)
-    const actions = { handleSetTest };
+
+
+    const actions = { };
 
     return(
         <Context.Provider value={{ store, actions}}>

@@ -3,12 +3,12 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Layout from "../layout/Layout";
 
-import App from "../App";
+import Home from "../views/Home";
 
 const innerRoutes = [
     {
         path:"/",
-        element:<App/>
+        element:<Home/>
     },
 ];
 

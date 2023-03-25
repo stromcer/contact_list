@@ -1,0 +1,30 @@
+.contactHeadContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 5%;    
+}
+
+.headButtonContainer{
+    display: flex;
+    flex-direction: row;
+    margin-right: 0;
+}
+
+.appContainer{
+    margin-inline: 10vh;
+    margin-top: 5vh;
+    border: solid black 2px;
+    border-radius: 7px;
+}
+
+
+.agendaHeader{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 5%;
+    padding-block: 1%;
+    border-bottom: solid black 2px;
+    background-color: silver;
+}
