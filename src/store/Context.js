@@ -1,19 +1,19 @@
-import React, {createContext, useContext, useState, useEffect } from `react`
+import React, {createContext, useContext, useState, useEffect } from 'react';
 
 
 
 
-const Context = createContext({children});
+const Context = createContext();
 
 
 
 
-export const ContextProvider = () => {
+export const ContextProvider = ({children}) => {
 
 
     //DATOS EJEMPLO DE COMO USAR EL CONTEXT DEL BOILERPLATE 
-    const [test ,setTest] = useState("");
-    const handleSetTest = () => setTest("Hola")
+    const [test ,setTest] = useState(true);
+    const handleSetTest = () => setTest( prev => !prev);
 
     // EN STORE ALMACENAMOS LOS DATOS PARA PASAR A TODA LA APP
     const store = { test, };
