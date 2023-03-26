@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect } from 'react';
 import { getAgenda, createContact, deleteContact, updateContact } from './externalActions';
-import { AGENDA_URL, CONTACT_URL } from './externalStore';
+import { AGENDA_URL, CONTACT_URL, AGENDA_NAME } from './externalStore';
 
 
 
@@ -26,7 +26,7 @@ export const ContextProvider = ({children}) => {
     },[])
 
 
-    
+    const handleSelectedId = (id) => setSelectedID(id)
     const handleTempName = (e) => setTempName(e.target.value);
     const handleTempEmail = (e) => setTempEmail(e.target.value);
     const handleTempAddress = (e) => setTempAddress(e.target.value);
@@ -47,12 +47,12 @@ export const ContextProvider = ({children}) => {
     }
 
     const handleNewContactData = () => {
-        const newData = {full_name:tempName,email:tempEmail,agenda_slug:"dmmstr",address:tempAddress, phone:tempPhone}
+        const newData = {full_name:tempName,email:tempEmail,agenda_slug: AGENDA_NAME,address:tempAddress, phone:tempPhone}
         createContact(CONTACT_URL ,newData, handleRefreshAgenda, console.log)
     }
 
     const handleUpdateContactData = () =>{
-        const newData = {full_name:tempName,email:tempEmail,agenda_slug:"dmmstr",address:tempAddress, phone:tempPhone}
+        const newData = {full_name:tempName,email:tempEmail,agenda_slug:AGENDA_NAME,address:tempAddress, phone:tempPhone}
         updateContact(CONTACT_URL, selectedID, newData, handleRefreshAgenda, console.log)
     }
 
@@ -61,9 +61,7 @@ export const ContextProvider = ({children}) => {
         deleteContact(CONTACT_URL, id, handleRefreshAgenda, console.log)
     }
     
-    const handleSelectedId = (id) => {
-        setSelectedID(id)
-    }
+   
 
 
 
