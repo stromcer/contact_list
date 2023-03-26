@@ -1,7 +1,8 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-
+import UseAnimations from "react-useanimations";
+import newContact from "react-useanimations/lib/userPlus";
 import useAppContext from "../store/Context";
 import NewContactForm from "./NewContactForm";
 
@@ -12,7 +13,11 @@ const NewContactModal = () => {
 
   return (
     <>
-      <Button onClick={handleModalNewContact}>Crear nuevo contacto</Button>
+      <UseAnimations
+        onClick={handleModalNewContact}
+        animation={newContact}
+        size={36}
+      />
 
       <Modal show={modalNewContact} onHide={handleModalNewContact}>
         <Modal.Header closeButton>

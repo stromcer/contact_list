@@ -16,7 +16,7 @@ const NewContactForm = () => {
   return (
     <Form>
       <Form.Group className="mb-3">
-        <Form.Label>Full Name :</Form.Label>
+        <Form.Label>Nombre Completo :</Form.Label>
         <Form.Control
           type="text"
           placeholder="Ej: Nombre Apellido Apellido"
@@ -26,7 +26,7 @@ const NewContactForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Email :</Form.Label>
+        <Form.Label>Correo electronico :</Form.Label>
         <Form.Control
           type="email"
           placeholder="Ej: email@domain.com"

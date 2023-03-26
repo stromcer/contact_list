@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import UseAnimations from "react-useanimations";
+import userMinus from "react-useanimations/lib/userMinus";
 import Accordion from "react-bootstrap/Accordion";
 import useAppContext from "../store/Context";
 
@@ -22,26 +22,43 @@ const ContactItem = ({ data }) => {
       <Accordion.Header>
         <div className="contactHeadContainer">
           <div>
-            {id} {full_name}
+            <i>{id}</i>
+            <b>{full_name}</b>
           </div>
         </div>
       </Accordion.Header>
-      <Accordion.Body>
-        <Row>
-          <Col>
-            <Row>Phone : {phone}</Row>
-            <Row>Email : {email}</Row>
-            <Row>Addres : {address}</Row>
-            <Row>Created : {created_at}</Row>
-          </Col>
-          <Col>
-            <div className="headButtonContainer">
-              <EditContactModal onEdit={handleEdit} />
-              <button onClick={() => handleDeleteContact(id)}> Borrar </button>
+      <Accordion.Body className="itemBody">
+        <div className="itemInfo">
+          <div>
+            <div> Telefono :</div>
+            <div>{phone}</div>
+          </div>
+          <div>
+            <div> Correo electronico :</div>
+            <div>{email}</div>
+          </div>
+          <div>
+            <div> Direccion :</div>
+            <div>{address}</div>
+          </div>
+          <div>
+            <div> Fecha de creacion :</div>
+            <div>{created_at}</div>
+          </div>
+        </div>
+
+        <div className="itemPhotoButtons">
+          <img
+            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg"
+            alt="dada"
+          />
+          <div className="headButtonContainer">
+            <EditContactModal onEdit={handleEdit} />
+            <div onClick={() => handleDeleteContact(id)}>
+              <UseAnimations animation={userMinus} size={30} />
             </div>
-            <img src="asd" alt=" " />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Accordion.Body>
     </Accordion.Item>
   );

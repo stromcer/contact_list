@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <div className="appContainer">
         <div className="agendaHeader">
-          <div> LISTA DE CONTACTOS </div>
+          <h3> LISTA DE CONTACTOS </h3>
           <NewContactModal />
         </div>
 
