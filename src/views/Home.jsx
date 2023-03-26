@@ -1,59 +1,35 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Accordion from 'react-bootstrap/Accordion';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Accordion from "react-bootstrap/Accordion";
+
+import ContactItem from "../components/ContactItem";
 
 import useAppContext from "../store/Context";
+import NewContactModal from "../components/NewContactModal";
 
-
-import '../styles/home.css'
+import "../styles/home.css";
 
 const Home = () => {
-    const {store, actions} = useAppContext();
-    const {agenda} = store;
+  const { store } = useAppContext();
+  const { agenda } = store;
 
-    return(
-    <div className="appContainer">
+  return (
+    <>
+      <div className="appContainer">
         <div className="agendaHeader">
-            <div> LISTA DE CONTACTOS </div>
-            <button >Crear nuevo contacto</button>
+          <div> LISTA DE CONTACTOS </div>
+          <NewContactModal />
         </div>
-         <Accordion>
-            {agenda.length 
-            ? agenda.map((item,index)=>{
-                return(
-                    <Accordion.Item eventKey={index} key={item.email}>
-                    <Accordion.Header  >
-                        <div className="contactHeadContainer">
-                            <div>{item.full_name}</div>
-                            <div className="headButtonContainer">
-                                <button> Editar </button>
-                                <button> Borrar </button>
-                            </div>
-                        </div>    
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <Row>
-                        <Col>
-                            <Row >Phone : {item.phone}</Row>
-                            <Row >Email : {item.email}</Row>
-                            <Row >Addres : {item.address}</Row>
-                        </Col>
-                        <Col> 
-                            <img src="asd" />  
-                        </Col>
-                        </Row>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                )
-            })
-            :"loading"}
-         </Accordion>
-    </div>
 
-    )
-}
+        <Accordion>
+          {agenda.length
+            ? agenda.map((singleContact) => (
+                <ContactItem key={singleContact.id} data={singleContact} />
+              ))
+            : "loading"}
+        </Accordion>
+      </div>
+    </>
+  );
+};
 
-
-export default Home;    
+export default Home;
