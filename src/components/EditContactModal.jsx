@@ -5,6 +5,7 @@ import UseAnimations from "react-useanimations";
 import edit from "react-useanimations/lib/settings";
 import useAppContext from "../store/Context";
 import NewContactForm from "./NewContactForm";
+import Alert from "./Alert";
 
 const EditContactModal = ({ onEdit }) => {
   const { store, actions } = useAppContext();
@@ -22,6 +23,7 @@ const EditContactModal = ({ onEdit }) => {
           <Modal.Title>Editar contacto : {selectedID} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Alert />
           <NewContactForm />
         </Modal.Body>
         <Modal.Footer>

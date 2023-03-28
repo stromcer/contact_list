@@ -5,6 +5,7 @@ import UseAnimations from "react-useanimations";
 import newContact from "react-useanimations/lib/userPlus";
 import useAppContext from "../store/Context";
 import NewContactForm from "./NewContactForm";
+import Alert from "./Alert";
 
 const NewContactModal = () => {
   const { store, actions } = useAppContext();
@@ -24,6 +25,7 @@ const NewContactModal = () => {
           <Modal.Title>Datos del nuevo contacto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Alert />
           <NewContactForm />
         </Modal.Body>
         <Modal.Footer>

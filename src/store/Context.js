@@ -14,11 +14,14 @@ export const ContextProvider = ({children}) => {
     const [ agenda ,setAgenda ] = useState([]);
     const [ modalNewContact, setModalNewContact ] = useState(false);
     const [ modalEditContact, setModalEditContact ] = useState(false);
+    const [ alert, setAlert ] = useState(true);
+    const [ alertMsg, setAlertMsg ] = useState("")
     const [ tempName, setTempName] = useState("");
     const [ tempEmail, setTempEmail] = useState("");
     const [ tempAddress, setTempAddress ] = useState("");
     const [ tempPhone, setTempPhone] = useState("");
     const [ selectedID, setSelectedID] = useState();
+    
   
 
     useEffect(()=>{
@@ -33,6 +36,15 @@ export const ContextProvider = ({children}) => {
     const handleTempPhone = (e) => setTempPhone(e.target.value)
     const handleModalNewContact = () => setModalNewContact(res => !res);
     const handleModalEditContact = () => setModalEditContact(res => !res);
+    const handleCloseAlert = () => setAlert(false)
+
+    const handleNewAlert = (msg) => {
+        console.log("alo");
+        setAlertMsg(msg);
+        setAlert(true);
+        
+    }
+    
     const handleEditContact = (name, email, address, phone) =>  {
         setTempName(name);
         setTempEmail(email);
@@ -44,29 +56,31 @@ export const ContextProvider = ({children}) => {
         getAgenda(AGENDA_URL, setAgenda)
         setModalNewContact(false);
         setModalEditContact(false);
+        handleCloseAlert();
+        
     }
 
     const handleNewContactData = () => {
         const newData = {full_name:tempName,email:tempEmail,agenda_slug: AGENDA_NAME,address:tempAddress, phone:tempPhone}
-        createContact(CONTACT_URL ,newData, handleRefreshAgenda, console.log)
+        createContact(CONTACT_URL ,newData, handleRefreshAgenda, handleNewAlert)
     }
 
     const handleUpdateContactData = () =>{
         const newData = {full_name:tempName,email:tempEmail,agenda_slug:AGENDA_NAME,address:tempAddress, phone:tempPhone}
-        updateContact(CONTACT_URL, selectedID, newData, handleRefreshAgenda, console.log)
+        updateContact(CONTACT_URL, selectedID, newData, handleRefreshAgenda, handleNewAlert)
     }
 
 
     const handleDeleteContact = (id) => {
-        deleteContact(CONTACT_URL, id, handleRefreshAgenda, console.log)
+        deleteContact(CONTACT_URL, id, handleRefreshAgenda, handleNewAlert)
     }
     
    
 
 
 
-    const store = { agenda, modalNewContact, tempName, tempEmail, tempAddress, tempPhone, modalEditContact, selectedID };
-    const actions = { handleSelectedId, handleModalNewContact, handleUpdateContactData, handleTempAddress,handleTempName,handleTempEmail,handleTempPhone, handleNewContactData, handleDeleteContact, handleEditContact, handleModalEditContact};
+    const store = { agenda, modalNewContact, tempName, tempEmail, tempAddress, tempPhone, modalEditContact, selectedID, alert , alertMsg };
+    const actions = { handleCloseAlert, handleSelectedId, handleModalNewContact, handleUpdateContactData, handleTempAddress,handleTempName,handleTempEmail,handleTempPhone, handleNewContactData, handleDeleteContact, handleEditContact, handleModalEditContact};
 
     return(
         <Context.Provider value={{ store, actions }}>

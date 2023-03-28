@@ -3,7 +3,6 @@ import UseAnimations from "react-useanimations";
 import userMinus from "react-useanimations/lib/userMinus";
 import Accordion from "react-bootstrap/Accordion";
 import useAppContext from "../store/Context";
-
 import EditContactModal from "./EditContactModal";
 
 const ContactItem = ({ data }) => {

@@ -18,8 +18,13 @@ export const createContact = (url, body, handleOK, handleError) => {
         body : JSON.stringify(body),
     })
     .then(res => res.json())
-    .then(data => handleOK(data))
-    .catch(e => handleError(e))
+    .then(data => {
+       if( data.msg){ 
+        new Error(data)
+        return}
+        handleOK(data) }
+        )
+    .catch(e => handleError(e.msg))
 }
 
 export const updateContact = (url, id, body, handleOK, handleError) => {
@@ -32,7 +37,7 @@ export const updateContact = (url, id, body, handleOK, handleError) => {
         body : JSON.stringify(body),
     })
     .then(res => res.json())
-    .then(data => handleOK(data))
+    .then(data =>  data.msg ? new Error(data.msg) : handleOK(data))
     .catch(e => handleError(e))
 
 }
@@ -46,5 +51,5 @@ export const deleteContact = (url, id, handleOK, handleError) => {
         }
     })
     .then(res => handleOK())
-    .catch(handleError)
+    .catch(e => handleError(e))
 }
