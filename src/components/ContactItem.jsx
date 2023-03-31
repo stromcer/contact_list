@@ -1,19 +1,25 @@
 import React from "react";
 import UseAnimations from "react-useanimations";
 import userMinus from "react-useanimations/lib/userMinus";
+import edit from "react-useanimations/lib/settings";
 import Accordion from "react-bootstrap/Accordion";
 import useAppContext from "../store/Context";
-import EditContactModal from "./EditContactModal";
 
 const ContactItem = ({ data }) => {
   const { id, full_name, email, phone, address, created_at } = data;
   const { actions } = useAppContext();
 
-  const { handleSelectedId, handleEditContact, handleDeleteContact } = actions;
+  const { handleSelectedId, handleEditContact, handleModalDelContact } =
+    actions;
 
   const handleEdit = () => {
     handleSelectedId(id);
     return handleEditContact(full_name, email, address, phone);
+  };
+
+  const handleDelete = () => {
+    handleSelectedId(id);
+    handleModalDelContact();
   };
 
   return (
@@ -52,8 +58,10 @@ const ContactItem = ({ data }) => {
             alt="dada"
           />
           <div className="headButtonContainer">
-            <EditContactModal onEdit={handleEdit} />
-            <div onClick={() => handleDeleteContact(id)}>
+            <div onClick={handleEdit}>
+              <UseAnimations animation={edit} size={30} />
+            </div>
+            <div onClick={handleDelete}>
               <UseAnimations animation={userMinus} size={30} />
             </div>
           </div>

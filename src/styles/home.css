@@ -107,3 +107,14 @@ svg:active{
 svg:active path{
     stroke:rgb(0, 0, 0)
 }
+
+
+.loader{
+    
+    margin:auto
+
+}
+
+.loader *{
+    background-color:#25257900;
+}

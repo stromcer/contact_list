@@ -14,13 +14,14 @@ export const ContextProvider = ({children}) => {
     const [ agenda ,setAgenda ] = useState([]);
     const [ modalNewContact, setModalNewContact ] = useState(false);
     const [ modalEditContact, setModalEditContact ] = useState(false);
-    const [ alert, setAlert ] = useState(true);
+    const [ alert, setAlert ] = useState(false);
     const [ alertMsg, setAlertMsg ] = useState("")
     const [ tempName, setTempName] = useState("");
     const [ tempEmail, setTempEmail] = useState("");
     const [ tempAddress, setTempAddress ] = useState("");
     const [ tempPhone, setTempPhone] = useState("");
     const [ selectedID, setSelectedID] = useState();
+    const [ modalDelContact, setModalDelContact ] = useState(false)
     
   
 
@@ -28,7 +29,7 @@ export const ContextProvider = ({children}) => {
         getAgenda(AGENDA_URL, setAgenda)
     },[])
 
-
+    const handleModalDelContact = () => setModalDelContact(prev => !prev)
     const handleSelectedId = (id) => setSelectedID(id)
     const handleTempName = (e) => setTempName(e.target.value);
     const handleTempEmail = (e) => setTempEmail(e.target.value);
@@ -39,10 +40,8 @@ export const ContextProvider = ({children}) => {
     const handleCloseAlert = () => setAlert(false)
 
     const handleNewAlert = (msg) => {
-        console.log("alo");
         setAlertMsg(msg);
         setAlert(true);
-        
     }
     
     const handleEditContact = (name, email, address, phone) =>  {
@@ -52,12 +51,23 @@ export const ContextProvider = ({children}) => {
         setTempPhone(phone);
         setModalEditContact(res => !res);
     }
+
+    const handleCleanData = () => {
+        setModalNewContact(false);
+            setModalEditContact(false);
+            handleCloseAlert();
+            setModalDelContact(false)
+            setTempAddress("")
+            setTempEmail("")
+            setTempName("")
+            setTempPhone("")
+            setSelectedID("")
+       }
+
+
     const handleRefreshAgenda = () => {
         getAgenda(AGENDA_URL, setAgenda)
-        setModalNewContact(false);
-        setModalEditContact(false);
-        handleCloseAlert();
-        
+        handleCleanData()        
     }
 
     const handleNewContactData = () => {
@@ -71,16 +81,16 @@ export const ContextProvider = ({children}) => {
     }
 
 
-    const handleDeleteContact = (id) => {
-        deleteContact(CONTACT_URL, id, handleRefreshAgenda, handleNewAlert)
+    const handleDeleteContact = () => {
+        deleteContact(CONTACT_URL, selectedID, handleRefreshAgenda, handleNewAlert)
     }
     
    
 
 
 
-    const store = { agenda, modalNewContact, tempName, tempEmail, tempAddress, tempPhone, modalEditContact, selectedID, alert , alertMsg };
-    const actions = { handleCloseAlert, handleSelectedId, handleModalNewContact, handleUpdateContactData, handleTempAddress,handleTempName,handleTempEmail,handleTempPhone, handleNewContactData, handleDeleteContact, handleEditContact, handleModalEditContact};
+    const store = { agenda, modalNewContact, tempName, tempEmail, tempAddress, tempPhone, modalEditContact, selectedID, alert , alertMsg, modalDelContact };
+    const actions = {handleModalDelContact, handleCloseAlert, handleSelectedId, handleModalNewContact, handleUpdateContactData, handleTempAddress,handleTempName,handleTempEmail,handleTempPhone, handleNewContactData, handleDeleteContact, handleEditContact, handleModalEditContact};
 
     return(
         <Context.Provider value={{ store, actions }}>

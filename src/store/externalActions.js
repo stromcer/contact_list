@@ -1,3 +1,8 @@
+import CustomError from "../utils/customError.js"
+
+
+
+
 export const getAgenda = (url, handler) => {
 
     return fetch(url)
@@ -17,14 +22,11 @@ export const createContact = (url, body, handleOK, handleError) => {
         },
         body : JSON.stringify(body),
     })
-    .then(res => res.json())
-    .then(data => {
-       if( data.msg){ 
-        new Error(data)
-        return}
-        handleOK(data) }
-        )
-    .catch(e => handleError(e.msg))
+    .then(res => {
+        if (!res.ok) throw new CustomError(res, handleError, "createContact")
+        return res.json()})
+    .then(data => handleOK(data))
+    .catch(e => console.log(e) )
 }
 
 export const updateContact = (url, id, body, handleOK, handleError) => {
